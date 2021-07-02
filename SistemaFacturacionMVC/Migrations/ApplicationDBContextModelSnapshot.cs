@@ -123,6 +123,33 @@ namespace SistemaFacturacionMVC.Migrations
                     b.ToTable("product");
                 });
 
+            modelBuilder.Entity("SistemaFacturacionMVC.Models.userT", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("lastame")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("rol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("user");
+                });
+
             modelBuilder.Entity("SistemaFacturacionMVC.Models.invoice", b =>
                 {
                     b.HasOne("SistemaFacturacionMVC.Models.client", "Client")

@@ -3,6 +3,10 @@
 *@
 @{
     var returnUrl = ViewData["ReturnUrl"] as string;
+    var error = TempData["Error"] as string;
+}
+@if(!string.IsNullOrEmpty(error)) { 
+    <h2 class="alert">@error</h2>
 }
 <div class="container-fluid">
     <div class="row no-gutter justify-content-center align-items-center">

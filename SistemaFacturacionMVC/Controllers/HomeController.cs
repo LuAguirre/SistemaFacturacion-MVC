@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SistemaFacturacionMVC.Models;
@@ -6,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SistemaFacturacionMVC.Controllers
@@ -35,18 +38,34 @@ namespace SistemaFacturacionMVC.Controllers
             return View();
         }
         [HttpPost("login")]
-        public IActionResult Login(string username, string password)
+        public async Task<IActionResult> Login(string username, string password, string returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             if(username == "pizza" && password == "123")
             {
-                return Ok();
+                var claims = new List<Claim>();
+                claims.Add(new Claim("username", username));
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, username));
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                await HttpContext.SignInAsync(claimsPrincipal);
+                return Redirect(returnUrl);
             }
             else
             {
-                return BadRequest("El usuario y/o contraseña son incorrectios");
+                TempData["Error"] = "Usuario y/o contraseña inválido";
+                return View("login");
             }
         }
 
+        [Authorize]
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
+        }
         public IActionResult Privacy()
         {
             return View();

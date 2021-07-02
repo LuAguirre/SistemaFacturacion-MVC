@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SistemaFacturacionMVC.Models.userT>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Usuarios del Sistema</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Lista de Usuarios</h3>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-lg btn-primary" asp-action="Create" asp-controller="Users">Agregar Usuario</button>
+        </div>
+    </div>
+    <div class="row">
+        @if(Model.Count() > 0)
+            {
+             <table class="table table-dark">
+                 <thead>
+                     <tr>
+                         <td>@Html.DisplayNameFor(m => m.id)</td>
+                         <td>@Html.DisplayNameFor(m => m.name)</td>
+                         <td>@Html.DisplayNameFor(m => m.lastame)</td>
+                         <td>@Html.DisplayNameFor(m => m.rol)</td>
+                         <td>@Html.DisplayNameFor(m => m.username)</td>
+                         <td>@Html.DisplayNameFor(m => m.password)</td>
+
+                     </tr>
+                 </thead>
+                 <tbody>
+                     @foreach (userT element in Model)
+                     {
+                         <tr>
+                             <td>@element.id</td>
+                             <td>@element.name</td>
+                             <td>@element.lastame</td>
+                             <td>@element.rol</td>
+                             <td>@element.username</td>
+                             <td type="password">@element.password</td>
+                             <td>
+                                 <button class="btn btn-primary" type="button" asp-action="Edit" asp-controller="Users" asp-route-id="@element.id">Editar</button>
+                                 <button class="btn btn-danger" type="button" asp-action="Delete" asp-controller="Users" asp-route-id="@element.id">Eliminar</button>
+
+                             </td>
+                         </tr>
+                }
+                 </tbody>
+
+             </table>
+
+            }else{
+            <h2>No hay información aún</h2>
+        }
+    </div>
+</div>
+
