@@ -22,5 +22,28 @@ namespace SistemaFacturacionMVC.Controllers
             IEnumerable<userT> usersList = _context.user;
             return View(usersList);
         }
+
+       
+        public IActionResult Create()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(userT user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.user.Add(user);
+                _context.SaveChanges();
+
+                TempData["menssage"] = "El nuevo usuario ha sido creado correctamente";
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
     }
 }
