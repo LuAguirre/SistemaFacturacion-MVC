@@ -1,0 +1,52 @@
+﻿@model SistemaFacturacionMVC.Models.userT
+@{
+    ViewData["Title"] = "Editar Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Agregar usuario</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form method="post" asp-action="Edit">
+                <input type="hidden" asp-for="id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+                <div class="form-group">
+                    <label asp-for="name"></label>
+                    <input asp-for="name" type="text" class="form-control" id="name" aria-describedby="" placeholder="Nombre del usuario">
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="lastame"></label>
+                    <input asp-for="lastame" type="text" class="form-control" id="lastname" placeholder="Apellido del usuario">
+                    <span asp-validation-for="lastame" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="username"></label>
+                    <input asp-for="username" type="text" class="form-control" id="username" placeholder="Usuario">
+                    <span asp-validation-for="username" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="password"></label>
+                    <input asp-for="password" type="password" class="form-control" id="password" placeholder="contraseña">
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="rol"></label>
+                    <select asp-for="rol" class="form-control">
+                        <option>Selecciona....</option>
+                        <option>Gerente</option>
+                        <option>Secretaria</option>
+                        <option>Operador</option>
+                    </select>
+                    <span asp-validation-for="rol" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary m-2" value="editUser">Editar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

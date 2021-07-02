@@ -50,8 +50,8 @@
                              <td>@element.username</td>
                              <td type="password">@element.password</td>
                              <td>
-                                 <button class="btn btn-primary" type="button" asp-action="Edit" asp-controller="Users" asp-route-id="@element.id">Editar</button>
-                                 <button class="btn btn-danger" type="button" asp-action="Delete" asp-controller="Users" asp-route-id="@element.id">Eliminar</button>
+                                 <a asp-controller="Users" asp-action="Edit" asp-route-id="@element.id" class="btn btn-light">Editar</a>
+                                 <a asp-controller="Users" asp-action="Delete" asp-route-id="@element.id" class="btn btn-danger">Eliminar</a>
 
                              </td>
                          </tr>
