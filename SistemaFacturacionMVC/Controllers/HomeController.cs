@@ -40,11 +40,11 @@ namespace SistemaFacturacionMVC.Controllers
             return View();
         }
         [HttpGet("login")]
-        public IActionResult Login(string returnUrl)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View();
-        }
+        //public IActionResult Login(string returnUrl)
+        //{
+        //    ViewData["ReturnUrl"] = returnUrl;
+        //    return View();
+        //}
         [HttpPost("login")]
         public async Task<IActionResult> Login(string username, string password)
         {
@@ -68,7 +68,7 @@ namespace SistemaFacturacionMVC.Controllers
             else
             {
                 TempData["Error"] = "Usuario y/o contraseña inválido";
-                return View("login");
+                return View("Index");
             }
         }
 
