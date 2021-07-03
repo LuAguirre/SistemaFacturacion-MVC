@@ -1,0 +1,56 @@
+﻿@model SistemaFacturacionMVC.Models.product
+@{
+    ViewData["Title"] = "Crear Nuevo Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Agregar usuario</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10">
+            <form method="post" asp-action="Edit">
+                <input type="hidden" asp-for="idProduct" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+                <div class="form-group">
+                    <label asp-for="name"></label>
+                    <input asp-for="name" type="text" class="form-control" id="name" aria-describedby="" placeholder="Nombre del producto">
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="description"></label>
+                    <input asp-for="description" type="text" class="form-control" id="description" placeholder="Descripción del producto">
+                    <span asp-validation-for="description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="price"></label>
+                    <input asp-for="price" type="text" class="form-control" id="price" placeholder="Precio del producto">
+                    <span asp-validation-for="price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="cost"></label>
+                    <input asp-for="cost" type="text" class="form-control" id="cost" placeholder="cost del precio">
+                    <span asp-validation-for="cost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="existence"></label>
+                    <input asp-for="existence" type="number" class="form-control" id="cost" placeholder="existencia del products">
+                    <span asp-validation-for="cost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="status"></label>
+                    <select asp-for="status" class="form-control">
+                        <option>Selecciona....</option>
+                        <option>Activo</option>
+                        <option>Inactivo</option>
+                    </select>
+                    <span asp-validation-for="status" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary m-2" value="editProduct">Editar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

@@ -84,14 +84,14 @@ namespace SistemaFacturacionMVC.Controllers
         {
             if (id == null || id == 0)
             {
-                return NotFound("No hay un usuario para editar");
+                return NotFound("No hay un usuario para eliminar");
             }
 
             var user = _context.user.Find(id);
 
             if (user == null)
             {
-                return NotFound("No hay un usuario para editar");
+                return NotFound("No hay un usuario para eliminar");
             }
 
             return View(user);
