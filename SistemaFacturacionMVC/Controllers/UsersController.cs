@@ -23,6 +23,8 @@ namespace SistemaFacturacionMVC.Controllers
             return View(usersList);
         }
 
+        
+
 
         public IActionResult Create()
         {

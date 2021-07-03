@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SistemaFacturacionMVC.Data;
 using SistemaFacturacionMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,24 @@ namespace SistemaFacturacionMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDBContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        public HomeController(ApplicationDBContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
             return View();
         }
+
         [Authorize]
         public IActionResult Secured()
         {
@@ -38,19 +46,24 @@ namespace SistemaFacturacionMVC.Controllers
             return View();
         }
         [HttpPost("login")]
-        public async Task<IActionResult> Login(string username, string password, string returnUrl)
+        public async Task<IActionResult> Login(string username, string password)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            if(username == "pizza" && password == "123")
-            {
-                var claims = new List<Claim>();
-                claims.Add(new Claim("username", username));
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, username));
+            var val = from a in _context.user where username == a.username && password == a.password select a.name;
 
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                await HttpContext.SignInAsync(claimsPrincipal);
-                return Redirect(returnUrl);
+            //ViewData["ReturnUrl"] = returnUrl;
+            if (val.Any()!)
+            {
+                var claims = new List<Claim>(); // creamos un listado de peticion
+                claims.Add(new Claim("username", val.First())); // guardamos el nombre de quien se logea
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, val.First())); //guardamos el tipo de peticion 
+                var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme); // asignamos esa peticicon a un esquema de cookies
+                var claimprincipal = new ClaimsPrincipal(claimIdentity); // la volvemos peticion principal
+
+
+                await HttpContext.SignInAsync(claimprincipal); // cremos la cookie de autentificacion
+
+
+                return RedirectToAction("Index", "Users"); // redireccion a un pagina 
             }
             else
             {
@@ -65,10 +78,6 @@ namespace SistemaFacturacionMVC.Controllers
         {
             await HttpContext.SignOutAsync();
             return Redirect("/");
-        }
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
