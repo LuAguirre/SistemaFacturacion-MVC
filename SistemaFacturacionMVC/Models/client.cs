@@ -24,6 +24,6 @@ namespace SistemaFacturacionMVC.Models
         [Display(Name ="Status")]
         [Required(ErrorMessage = "El campo es obligatorio")]
         public string status { get; set; }
-
+        
     }
 }

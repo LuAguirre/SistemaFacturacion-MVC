@@ -222,3 +222,7 @@ C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\o
 C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Users\Create.cshtml.g.cs
 C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Users\Edit.cshtml.g.cs
 C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Users\Delete.cshtml.g.cs
+C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\clients\Index.cshtml.g.cs
+C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\clients\Create.cshtml.g.cs
+C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\clients\Edit.cshtml.g.cs
+C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\clients\Delete.cshtml.g.cs
