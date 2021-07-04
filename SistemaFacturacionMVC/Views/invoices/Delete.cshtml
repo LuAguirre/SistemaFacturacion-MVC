@@ -1,0 +1,50 @@
+﻿@model SistemaFacturacionMVC.Models.invoice
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>¿Desea Eliminar el Factura?</h1>
+<br />
+<hr />
+<form asp-action="Delete">
+    <table>
+
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.id)</td>
+            <td>
+                @Html.DisplayFor(m => m.id)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Client)</td>
+            <td>
+                @Html.DisplayFor(m => m.Client.name) @Html.DisplayFor(m => m.Client.lastname)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.total)</td>
+            <td>
+                @Html.DisplayFor(m => m.total)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.dateInvoice)</td>
+            <td>
+                @Html.DisplayFor(m => m.dateInvoice)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.status)</td>
+            <td>
+                @Html.DisplayFor(m => m.status)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="@Url.Action("ConfirmacionEliminar","invoices",new { id = Model.id })"> <input type="button" value="Eliminar Factura" class="btn btn-danger" /></a> |
+                @Html.ActionLink("Regresar a la Lista", "Index", "invoices")
+            </td>
+        </tr>
+    </table>
+</form>

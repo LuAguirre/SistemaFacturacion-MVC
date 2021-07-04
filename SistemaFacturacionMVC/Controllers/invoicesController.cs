@@ -110,7 +110,35 @@ namespace SistemaFacturacionMVC.Controllers
 
             return View();
         }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var factura = await _context.invoice.FindAsync(id);
+            var cliente = await _context.client.FindAsync(factura.idClient);
+
+            ViewBag.Cliente = cliente.name;
+            return View(factura);
+        }
+
+
+        public async Task<IActionResult> ConfirmacionEliminar(int? id)
+        {
+            try
+            {
+                var persona = _context.invoice.Find(id);
+                _context.invoice.Remove(persona);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("HttpError404", new { erro = e });
+            }
+        }
 
     }
 }
