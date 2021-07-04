@@ -17,6 +17,12 @@ namespace SistemaFacturacionMVC.Models
         public virtual client Client { get; set; }
         [Display(Name ="Total Factura")]
         public decimal total { get; set; }
+
+        [Display(Name = "Fecha")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "El campo es obligatorio")]
+        public DateTime dateInvoice { get; set; }
+
         [Display(Name ="Status Factura")]
         [Required(ErrorMessage = "El campo es obligatorio")]
         public string status { get; set; }
