@@ -63,5 +63,54 @@ namespace SistemaFacturacionMVC.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var factura = await _context.invoice.FindAsync(id);
+
+            List<SelectListItem> listItems = new List<SelectListItem>();
+
+            listItems.Add(new SelectListItem() { Text = "Seleccione una opcion", Value = " " });
+
+            foreach (var item in _context.client)
+            {
+                listItems.Add(new SelectListItem() { Text = $"{item.name} {item.lastname}", Value = $"{item.id}" });
+            }
+
+            ViewData["idClient"] = new SelectList(listItems, "Value", "Text");
+
+            return View(factura);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(invoice factura)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(factura);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            List<SelectListItem> listItems = new List<SelectListItem>();
+
+            listItems.Add(new SelectListItem() { Text = "Seleccione una opcion", Value = " " });
+
+            foreach (var item in _context.client)
+            {
+                listItems.Add(new SelectListItem() { Text = $"{item.name} {item.lastname}", Value = $"{item.id}" });
+            }
+
+            ViewData["idClient"] = new SelectList(listItems, "Value", "Text");
+
+            return View();
+        }
+
+
     }
 }

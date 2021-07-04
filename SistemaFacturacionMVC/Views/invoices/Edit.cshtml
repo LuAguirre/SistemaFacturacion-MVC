@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-action="Create">
+        <form method="post" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="idClient" class="control-label"></label>
@@ -38,7 +38,7 @@
                 <span asp-validation-for="status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary m-2" value="createClient">Guardar</button>
+                <button type="submit" class="btn btn-primary m-2" value="editInvoice">Editar</button>
             </div>
         </form>
     </div>
