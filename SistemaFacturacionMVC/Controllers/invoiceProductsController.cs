@@ -192,7 +192,7 @@ namespace SistemaFacturacionMVC.Controllers
                 var factura = _context.invoice.Find(numeroFactura);
                 var detalle = _context.invoiceProduct.Find(numeroFactura, codigoProducto);
 
-                //factura.total = factura.total - (detalle.quantity * producto.price);
+                factura.total = factura.total - (detalle.quantity * producto.price);
                 _context.invoice.Update(factura);
                 _context.SaveChanges();
 
