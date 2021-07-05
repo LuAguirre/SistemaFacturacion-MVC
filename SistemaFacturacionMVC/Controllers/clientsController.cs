@@ -95,18 +95,28 @@ namespace SistemaFacturacionMVC.Controllers
         [HttpPost]
         public IActionResult DeleteClient(int? id)
         {
-            var cli = _context.client.Find(id);
-
-            if (cli == null)
+            try
             {
-                return NotFound();
-            }
-            _context.client.Remove(cli);
-            _context.SaveChanges();
+                var cli = _context.client.Find(id);
 
-            TempData["menssage"] = "El cliente ha sido eliminado correctamente";
-            return RedirectToAction("Index");
+                if (cli == null)
+                {
+                    return NotFound();
+                }
+                _context.client.Remove(cli);
+                _context.SaveChanges();
+
+                TempData["menssage"] = "El cliente ha sido eliminado correctamente";
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+               TempData["menssageClient"] = "El cliente no puede ser eliminado debido a la relación con una factura";
+                return RedirectToAction("Index");
+            }
         }
+
+        
     }
 }
 
