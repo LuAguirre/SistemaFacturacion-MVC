@@ -1,7 +1,7 @@
-﻿@model  SistemaFacturacionMVC.Models.invoiceProduct
+﻿@model SistemaFacturacionMVC.Models.invoiceProduct
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,13 +11,14 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-action="Create">
+        <form method="post" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="idInvoice" value="@TempData["idInvoice"]" />
+            <input type="hidden" asp-for="idInvoice" />
+            <input type="hidden" asp-for="idProduct" />
+            <input type="hidden" asp-for="price" />
+
             <div class="form-group">
-                <label asp-for="idProduct" class="control-label"></label>
-                <select asp-for="idProduct" class="form-control" asp-items="ViewBag.idProduct"></select>
-                <span asp-validation-for="idProduct" class="text-danger"></span>
+                <label asp-for="Product.name" class="control-label"></label>
             </div>
             <div class="form-group">
                 <label asp-for="quantity" class="control-label"></label>
@@ -29,9 +30,9 @@
                 }
             </div>
             <div class="form-group">
-                <input type="submit" asp-route-id="@TempData["idInvoice"]" value="Guardar" class="btn btn-primary" /> |
-                <a asp-action="Index" asp-route-id="@TempData["idInvoice"]">Regresar a la lista</a>
+                <a href="@Url.Action("Edit","invoiceProducts",new { numeroFactura = TempData["idInvoice"], codigoProducto = TempData["idProduct"], quantity = this.Html.Display("#cant") })"> <input type="submit" value="Guardar" class="btn btn-primary" /></a> |
             </div>
         </form>
     </div>
 </div>
+

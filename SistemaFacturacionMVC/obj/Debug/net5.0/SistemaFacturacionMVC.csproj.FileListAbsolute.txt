@@ -236,3 +236,5 @@ C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\o
 C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\invoices\Delete.cshtml.g.cs
 C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\invoiceProducts\Create.cshtml.g.cs
 C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\invoiceProducts\Index.cshtml.g.cs
+C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\invoiceProducts\Edit.cshtml.g.cs
+C:\Users\louma\OneDrive\Documentos\SistemaFacturacionMVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\invoiceProducts\Delete.cshtml.g.cs

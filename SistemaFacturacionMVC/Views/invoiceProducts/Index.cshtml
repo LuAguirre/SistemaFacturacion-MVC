@@ -67,10 +67,10 @@
                         @if (string.Format(ViewBag.facturaAnulada) != "Inactiva")
                         {
                             <td>
-                                @Html.ActionLink("Editar", "Edit", new { idInvoice = @TempData["idInvoice"], codigoProducto = element.idProduct })
+                                @Html.ActionLink("Editar", "Edit", new { idInvoice = @TempData["idInvoice"], idProduct = element.idProduct })
                             </td>
                             <td>
-                                @Html.ActionLink("Eliminar", "Delete", new { idInvoice = @TempData["idInvoice"], codigoProducto = element.idProduct })
+                                @Html.ActionLink("Eliminar", "Delete", new { idInvoice = @TempData["idInvoice"], idProduct = element.idProduct })
                             </td>
 
                         }
