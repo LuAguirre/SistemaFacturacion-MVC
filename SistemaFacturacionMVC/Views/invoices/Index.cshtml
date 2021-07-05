@@ -29,7 +29,6 @@
                     <tr>
                         <td>@Html.DisplayNameFor(m => m.id)</td>
                         <td>@Html.DisplayNameFor(m => m.idClient)</td>
-                        <td>Apellido</td>
                         <td>@Html.DisplayNameFor(m => m.total)</td>
                         <td>@Html.DisplayNameFor(m => m.dateInvoice)</td>
                         <td>@Html.DisplayNameFor(m => m.status)</td>
@@ -41,12 +40,12 @@
                     {
                     <tr>
                         <td>@element.id</td>
-                        <td>@element.Client.name</td>
-                        <td>@element.Client.lastname</td>
+                        <td>@element.idClient</td>
                         <td>@element.total</td>
                         <td>@element.dateInvoice</td>
                         <td>@element.status</td>
                         <td>
+                            <a  asp-action="details" asp-route-id="@element.id" class="btn btn-light">Comprar</a>
                             <a asp-controller="invoices" asp-action="Edit" asp-route-id="@element.id" class="btn btn-light">Editar</a>
                             <a asp-controller="invoices" asp-action="Delete" asp-route-id="@element.id" class="btn btn-danger">Eliminar</a>
 

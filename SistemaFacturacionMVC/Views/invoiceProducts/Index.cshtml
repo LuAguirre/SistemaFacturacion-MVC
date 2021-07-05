@@ -1,0 +1,82 @@
+﻿@model IEnumerable<SistemaFacturacionMVC.Models.invoiceProduct>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalles de factura</h1>
+<p>
+    @if (string.Format(ViewBag.facturaAnulada) != "Inactiva")
+    {
+        <a asp-action="Create" asp-route-id="@TempData["idInvoice"]">Crear Detalle Factura</a>
+    }
+    else
+    {
+        <span class="text-danger">La factura se encuentra anulada</span>
+    }
+</p>
+<form>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr style="text-align: center">
+                    <th>
+                        @Html.DisplayNameFor(model => model.idInvoice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.idProduct)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Product.name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Product.description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.quantity)
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var element in Model)
+                {
+                    <tr style="text-align: center">
+                        <td>
+                            @element.idInvoice
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => element.idProduct)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => element.Product.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => element.Product.description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => element.price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => element.quantity)
+                        </td>
+                        @if (string.Format(ViewBag.facturaAnulada) != "Inactiva")
+                        {
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { idInvoice = @TempData["idInvoice"], codigoProducto = element.idProduct })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Eliminar", "Delete", new { idInvoice = @TempData["idInvoice"], codigoProducto = element.idProduct })
+                            </td>
+
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</form>

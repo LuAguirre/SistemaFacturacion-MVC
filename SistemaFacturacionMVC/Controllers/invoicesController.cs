@@ -140,5 +140,17 @@ namespace SistemaFacturacionMVC.Controllers
             }
         }
 
+        public async Task<IActionResult> details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var inv = await _context.invoice.FindAsync(id);
+
+            return RedirectToAction("Index", "invoiceProducts", new { id = inv.id });
+        }
+
     }
 }

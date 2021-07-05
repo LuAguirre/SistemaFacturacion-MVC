@@ -21,5 +21,13 @@ namespace SistemaFacturacionMVC.Models
         public int? idProduct { get; set; }
         [ForeignKey("idProduct")]
         public virtual product Product { get; set; }
+
+        [Required(ErrorMessage = "El campo cantidad es obligatorio")]
+        [Display(Name = "Cantidad")]
+        public int quantity { get; set; }
+
+        [Required(ErrorMessage = "El campo precio unitario es obligatorio")]
+        [Display(Name = "Precio Unitario")]
+        public decimal price { get; set; }
     }
 }
