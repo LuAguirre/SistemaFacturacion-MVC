@@ -16,12 +16,24 @@
         </div>
     }
 
+    <script type="text/javascript">
+        function mostrarDatos() {
+            var idProduct = document.getElementById("product").value;
+
+            var url = "@Url.Action("product", "Reports", new { idProduct = "param-id" })";
+            url = url.replace("param-id", idProduct);
+                $("#result").load(url);
+                window.location.href = url;
+        }
+        </script>
+
     <div class="row">
         <div class="col-sm-6">
             <h3>Listado de ventas</h3>
         </div>
         <div class="col-sm-7">
-            <select id="listaProductos" onchange="seleccionarProducto();" class="form-control" asp-items="ViewBag.products"></select>
+            <label class="control-label">Productos</label>
+            <select id="product" class="form-control" onchange="mostrarDatos()" asp-items="ViewBag.idProduct"></select>
             <hr />
             <input type="date" onchange="analizarFechas();" class="form-control" id="fechaPrimero">
             <hr />
@@ -62,78 +74,6 @@
     <hr />
 </div>
 
-@*<script>
-    valor1();
-
-    function valor1() {
-        let comboProductos = document.getElementById('listaProductos');
-        comboProductos.value = @TempData["idProduct"];
-    }
-
-    function analizarFechas() {
-        var fecha1 = document.getElementById('fechaPrimero');
-        var fecha2 = document.getElementById('fechaSegundo');
-
-        initDate = fecha1.value;
-        finalDate = fecha2.value;
-
-        if (initDate == "" || finalDate == "") {
-            alert("NOTA: Ambas fechas son Obligatorias");
-        } else {
-            seleccionarProducto();
-        }
-
-    }
-
-    function seleccionarProducto() {
-
-        var idProducto = document.getElementById('listaProductos');
-        var fecha1 = document.getElementById('fechaPrimero');
-        var fecha2 = document.getElementById('fechaSegundo');
-
-        idProduct = idProducto.value;
-        initDate = fecha1.value;
-        finalDate = fecha2.value;
-
-        if (initDate == "" && finalDate == "") {
-            var url = "@Url.Action("product", "Reports", new { idProduct = "param-id" })";
-            url = url.replace("param-idProduct", idProduct);
-            $("#result").load(url);
-
-            window.location.href = url;
-
-            return;
-        }
-
-        if (idProduct != 0 && initDate != "" && finalDate != "") {
-            var url = "@Url.Action("product", "Reports", new { idProduct = "param-idProduct" , initDate = "param-initDate", finalDate = "param-finalDate" })";
-            url = url.replace("param-idProduct", idProduct).replace("param-initDate", initDate).replace("param-finalDate", finalDate);
-            $("#result").load(url);
-
-            url = url.replace("amp;", "");
-            url = url.replace("amp;", "");
-
-            window.location.href = url;
-
-            return;
-        }
-
-        if (idProduct == 0 && initDate != "" && finalDate != "") {
-            var url = "@Url.Action("product", "Reports", new { initDate = "param-initDate", finalDate = "param-finalDate" })";
-            url = url.replace("param-initDate", initDate).replace("param-finalDate", finalDate);
-            $("#result").load(url);
-
-            url = url.replace("amp;", "");
-            url = url.replace("amp;", "");
-
-            window.location.href = url;
-
-            return;
-        }
-
-    }
-
-</script>*@
 
 @section Scripts{
     @{

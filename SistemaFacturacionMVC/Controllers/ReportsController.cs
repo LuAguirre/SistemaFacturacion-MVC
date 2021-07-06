@@ -25,61 +25,29 @@ namespace SistemaFacturacionMVC.Controllers
 
         async public  Task<IActionResult> product(int? idProduct, string initDate, string finalDate)
         {
+            List<SelectListItem> listItems = new List<SelectListItem>();
+
+            listItems.Add(new SelectListItem() { Text = "Seleccione una opcion", Value = " " });
+
+            foreach (var item in _context.product)
+            {
+                listItems.Add(new SelectListItem() { Text = $"{item.name} ", Value = $"{item.idProduct}" });
+            }
+
+            ViewData["idProduct"] = new SelectList(listItems, "Value", "Text");
+
             if (idProduct != 0 && initDate == null && finalDate == null)
             {
-                var listado = await _context.spProducts.FromSqlRaw("VentasxProductoxID @idProduct", new SqlParameter("@idProduct", idProduct)).ToListAsync();
-
-                var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
-                listItems.Add(new SelectListItem() { Value = "0", Text = "Productos" });
-
-                ViewData["products"] = new SelectList(listItems, "Value", "Text");
-
-                TempData["idProducto"] = idProduct;
-                return View(listado);
+                var list = await _context.spProducts.FromSqlRaw("sellProductByID @idProduct", new SqlParameter("@idProduct", idProduct)).ToListAsync();
+                return View(list);
+               
             }
-
-            if ((idProduct != 0 && idProduct != null) && initDate != null && finalDate != null)
+            else
             {
-                List<SqlParameter> parameters = new List<SqlParameter>
-                    {
-                       new SqlParameter("@idProduct", idProduct),
-                       new SqlParameter("@fechaInicio", initDate),
-                       new SqlParameter("@fechaFinal", finalDate)
-                    };
 
-                var listado = await _context.spProducts.FromSqlRaw("VentasxProducto @fechaInicio, @fechaFinal, @idProduct", parameters.ToArray()).ToListAsync();
-
-                var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
-                listItems.Add(new SelectListItem() { Value = "0", Text = " Productos " });
-
-                ViewData["products"] = new SelectList(listItems, "Value", "Text");
-
-                TempData["idProducto"] = idProduct;
-                return View(listado);
+                TempData["mensaje"] = "No se han encontrado resultados para este reporte";
+                return View();
             }
-
-            if (idProduct == null && initDate != null && finalDate != null)
-            {
-                List<SqlParameter> parameters = new List<SqlParameter>
-                    {
-                       new SqlParameter("@fechaInicio", initDate),
-                       new SqlParameter("@fechaFinal", finalDate)
-                    };
-
-                var listado = await _context.spProducts.FromSqlRaw("VentasxProductoxfechas @fechaInicio, @fechaFinal", parameters.ToArray()).ToListAsync();
-
-                var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
-                listItems.Add(new SelectListItem() { Value = "0", Text = "Productos" });
-
-                ViewData["products"] = new SelectList(listItems, "Value", "Text");
-
-                TempData["idProducto"] = idProduct;
-                return View(listado);
-            }
-
-            //  return NotFound();
-            Console.WriteLine("not found");
-            return View();
         }
     }
 }
