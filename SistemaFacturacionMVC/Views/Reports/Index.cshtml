@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+@Html.ActionLink("Visualizar", "product", new { idProduct = 0, initDate = "", finalDate = "" }, new { @class = "btn btn-warning" })

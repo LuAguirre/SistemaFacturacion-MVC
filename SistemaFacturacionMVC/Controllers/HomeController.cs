@@ -55,8 +55,7 @@ namespace SistemaFacturacionMVC.Controllers
                 await HttpContext.SignInAsync(claimprincipal); // cremos la cookie de autentificacion
 
            
-                return RedirectToAction("Index", "Users"); // redireccion a un pagina 
-                
+                return RedirectToAction("Index", "Users"); 
             }
             else
             {
