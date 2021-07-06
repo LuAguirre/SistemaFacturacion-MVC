@@ -23,31 +23,76 @@ namespace SistemaFacturacionMVC.Controllers
             return View();
         }
 
-        async public  Task<IActionResult> product(int? idProduct, string initDate, string finalDate)
+        async public  Task<IActionResult> product(int? idProducto, string fechaInicio, string fechaFinal)
         {
-            List<SelectListItem> listItems = new List<SelectListItem>();
-
-            listItems.Add(new SelectListItem() { Text = "Seleccione una opcion", Value = " " });
-
-            foreach (var item in _context.product)
+            if (idProducto == 0 && fechaInicio == null && fechaFinal == null)
             {
-                listItems.Add(new SelectListItem() { Text = $"{item.name} ", Value = $"{item.idProduct}" });
+                var listado = await _context.spProducts.FromSqlRaw("ventaProductos").ToListAsync();
+
+                var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
+                listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
+
+                ViewData["productos"] = new SelectList(listItems, "Value", "Text");
+                TempData["idProducto"] = idProducto;
+
+                return View(listado);
             }
 
-            ViewData["idProduct"] = new SelectList(listItems, "Value", "Text");
-
-            if (idProduct != 0 && initDate == null && finalDate == null)
+            if (idProducto != 0 && fechaInicio == null && fechaFinal == null)
             {
-                var list = await _context.spProducts.FromSqlRaw("sellProductByID @idProduct", new SqlParameter("@idProduct", idProduct)).ToListAsync();
-                return View(list);
-               
-            }
-            else
-            {
+                var listado = await _context.spProducts.FromSqlRaw("VentasxProductoxID @idProduct", new SqlParameter("@idProduct", idProducto)).ToListAsync();
 
-                TempData["mensaje"] = "No se han encontrado resultados para este reporte";
-                return View();
+                var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
+                listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
+
+                ViewData["productos"] = new SelectList(listItems, "Value", "Text");
+
+                TempData["idProducto"] = idProducto;
+                return View(listado);
             }
+
+            if ((idProducto != 0 && idProducto != null) && fechaInicio != null && fechaFinal != null)
+            {
+                // "2021-06-30"
+                List<SqlParameter> parameters = new List<SqlParameter>
+                    {
+                       new SqlParameter("@idProduct", idProducto),
+                       new SqlParameter("@fechaInicio", fechaInicio),
+                       new SqlParameter("@fechaFinal", fechaFinal)
+                    };
+
+                var listado = await _context.spProducts.FromSqlRaw("VentasxProducto @fechaInicio, @fechaFinal, @idProduct", parameters.ToArray()).ToListAsync();
+
+                var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
+                listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
+
+                ViewData["productos"] = new SelectList(listItems, "Value", "Text");
+
+                TempData["idProducto"] = idProducto;
+                return View(listado);
+            }
+
+            if (idProducto == null && fechaInicio != null && fechaFinal != null)
+            {
+                List<SqlParameter> parameters = new List<SqlParameter>
+                    {
+                       new SqlParameter("@fechaInicio", fechaInicio),
+                       new SqlParameter("@fechaFinal", fechaFinal)
+                    };
+
+                var listado = await _context.spProducts.FromSqlRaw("VentasxProductoxfechas @fechaInicio, @fechaFinal", parameters.ToArray()).ToListAsync();
+
+                var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
+                listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
+
+                ViewData["productos"] = new SelectList(listItems, "Value", "Text");
+
+                TempData["idProducto"] = 0;
+                return View(listado);
+            }
+
+            return NotFound();
         }
+
     }
 }

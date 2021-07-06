@@ -101,7 +101,7 @@
         fechaSegundo = fecha2.value;
 
         if (fechaPrimero == "" && fechaSegundo == "") {
-            var url = "@Url.Action("product", "Reports", new { idProducto = "param-id" })";
+            var url = "@Url.Action("ReporteVentasProductoAsync", "reportes", new { idProducto = "param-id" })";
             url = url.replace("param-id", idProducto);
             $("#result").load(url);
 
@@ -111,7 +111,7 @@
         }
 
         if (idProducto != 0 && fechaPrimero != "" && fechaSegundo != "") {
-            var url = "@Url.Action("product", "Reports", new { idProducto = "param-id" , fechaInicio = "param-fechaInicio", fechaFinal = "param-fechaFinal" })";
+            var url = "@Url.Action("ReporteVentasProductoAsync", "reportes", new { idProducto = "param-id" , fechaInicio = "param-fechaInicio", fechaFinal = "param-fechaFinal" })";
             url = url.replace("param-id", idProducto).replace("param-fechaInicio", fechaPrimero).replace("param-fechaFinal", fechaSegundo);
             $("#result").load(url);
 
@@ -124,7 +124,7 @@
         }
 
         if (idProducto == 0 && fechaPrimero != "" && fechaSegundo != "") {
-            var url = "@Url.Action("product", "Reports", new { fechaInicio = "param-fechaInicio", fechaFinal = "param-fechaFinal" })";
+            var url = "@Url.Action("ReporteVentasProductoAsync", "reportes", new { fechaInicio = "param-fechaInicio", fechaFinal = "param-fechaFinal" })";
             url = url.replace("param-fechaInicio", fechaPrimero).replace("param-fechaFinal", fechaSegundo);
             $("#result").load(url);
 

@@ -410,3 +410,6 @@ C:\Users\louma\OneDrive\Escritorio\SF\SistemaFacturacion-MVC\SistemaFacturacionM
 C:\Users\louma\OneDrive\Escritorio\SF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\SistemaFacturacionMVC.genruntimeconfig.cache
 C:\Users\louma\OneDrive\Escritorio\SF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Reports\Index.cshtml.g.cs
 C:\Users\louma\OneDrive\Escritorio\SF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Reports\product.cshtml.g.cs
+C:\Users\louma\OneDrive\Escritorio\SF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Reports\ReporteEstadisticasFacturacion.cshtml.g.cs
+C:\Users\louma\OneDrive\Escritorio\SF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\reportes\ReporteVentasProductoAsync.cshtml.g.cs
+C:\Users\louma\OneDrive\Escritorio\SF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\reportes\Index.cshtml.g.cs
