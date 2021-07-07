@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SistemaFacturacionMVC.Data;
+using SistemaFacturacionMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,15 +28,16 @@ namespace SistemaFacturacionMVC.Controllers
         {
             if (idProducto == 0 && fechaInicio == null && fechaFinal == null)
             {
-                var listado = await _context.spProducts.FromSqlRaw("ventaProductos").ToListAsync();
-
+                //String query = "select p.idProduct, p.name, ip.price, ip.quantity, sum(ip.price * quantity) as Total_Vendido, i.dateInvoice from product as p, invoiceProduct ip, invoice i where p.idProduct = ip.idProduct and ip.idInvoice = i.id group by p.idProduct, p.name, i.dateInvoice, ip.price, ip.quantity";
+                //String queryGG = "select * from product";
+                List<spProducts> list = _context.spProducts.FromSqlRaw("ventaProductos").ToList();
                 var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
                 listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
 
                 ViewData["productos"] = new SelectList(listItems, "Value", "Text");
                 TempData["idProducto"] = idProducto;
 
-                return View(listado);
+                return View(list);
             }
 
             if (idProducto != 0 && fechaInicio == null && fechaFinal == null)

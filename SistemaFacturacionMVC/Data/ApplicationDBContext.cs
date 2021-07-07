@@ -18,6 +18,8 @@ namespace SistemaFacturacionMVC.Data
         {
             modelBuilder.Entity<invoiceProduct>()
                 .HasKey(ip => new { ip.idInvoice, ip.idProduct });
+            modelBuilder.Entity<spProducts>()
+                .HasNoKey();
         }
 
 

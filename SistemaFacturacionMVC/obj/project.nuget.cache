@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vCesOf4vG3WX6aB35n0QgMYMOhp0/0gfxRVfszzByRCyYmFzMvEvUecb7OjHqE/RLPqrDIxEHxG9GRxS1gFUGw==",
+  "dgSpecHash": "5vueREV0wMZTudFstWEqfFlb581GfB6DgPo8PUu3cvZlUN5E2kPjPNBSLEYjGyHjhs0cvyzCR89OmkVQ3slBhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\louma\\OneDrive\\Escritorio\\SF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj",
+  "projectFilePath": "C:\\Users\\louma\\OneDrive\\Escritorio\\pSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\louma\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\louma\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

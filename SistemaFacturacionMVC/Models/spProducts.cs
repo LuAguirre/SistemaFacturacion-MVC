@@ -8,7 +8,7 @@ namespace SistemaFacturacionMVC.Models
 {
     public class spProducts
     {
-        [Key]
+      
         public int idProduct { get; set; }
 
         public string name { get; set; }
