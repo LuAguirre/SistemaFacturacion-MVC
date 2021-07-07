@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SistemaFacturacionMVC.Data;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace SistemaFacturacionMVC.Controllers
 {
+    [Authorize]
     public class invoicesController : Controller
     {
         private readonly ApplicationDBContext _context;
@@ -136,7 +138,8 @@ namespace SistemaFacturacionMVC.Controllers
             }
             catch (Exception e)
             {
-                return RedirectToAction("HttpError404", new { erro = e });
+                TempData["menssageDelete"] = "La factura no puede ser eliminada debido a que hay relación con detalles de factura ";
+                return RedirectToAction("Index");
             }
         }
 

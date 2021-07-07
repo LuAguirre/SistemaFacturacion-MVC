@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SistemaFacturacionMVC.Data;
 using SistemaFacturacionMVC.Models;
 using System;
@@ -8,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace SistemaFacturacionMVC.Controllers
 {
+    [Authorize]
     public class clientsController : Controller
     {
+        
         private readonly ApplicationDBContext _context;
         public clientsController(ApplicationDBContext context)
         {

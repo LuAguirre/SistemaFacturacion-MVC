@@ -15,6 +15,15 @@
             </button>
         </div>
     }
+    @if (TempData["menssageDelete"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            @TempData["menssageDelete"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
 
     <div class="row">
         <div class="col-sm-6">
@@ -43,20 +52,20 @@
                 <tbody>
                     @foreach (product element in Model)
                     {
-                    <tr>
-                        <td>@element.idProduct</td>
-                        <td>@element.name</td>
-                        <td>@element.description</td>
-                        <td>@element.price</td>
-                        <td>@element.cost</td>
-                        <td>@element.existence</td>
-                        <td>@element.status</td>
-                        <td>
-                            <a asp-controller="products" asp-action="Edit" asp-route-id="@element.idProduct" class="btn btn-light">Editar</a>
-                            <a asp-controller="products" asp-action="Delete" asp-route-id="@element.idProduct" class="btn btn-danger">Eliminar</a>
+                        <tr>
+                            <td>@element.idProduct</td>
+                            <td>@element.name</td>
+                            <td>@element.description</td>
+                            <td>@element.price</td>
+                            <td>@element.cost</td>
+                            <td>@element.existence</td>
+                            <td>@element.status</td>
+                            <td>
+                                <a asp-controller="products" asp-action="Edit" asp-route-id="@element.idProduct" class="btn btn-light">Editar</a>
+                                <a asp-controller="products" asp-action="Delete" asp-route-id="@element.idProduct" class="btn btn-danger">Eliminar</a>
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     }
                 </tbody>
 

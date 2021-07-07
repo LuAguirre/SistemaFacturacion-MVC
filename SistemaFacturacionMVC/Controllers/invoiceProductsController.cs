@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SistemaFacturacionMVC.Data;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace SistemaFacturacionMVC.Controllers
 {
+    [Authorize]
     public class invoiceProductsController : Controller
     {
         private readonly ApplicationDBContext _context;
