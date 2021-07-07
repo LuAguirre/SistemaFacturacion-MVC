@@ -584,3 +584,4 @@ C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacion
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\SistemaFacturacionMVC.pdb
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\SistemaFacturacionMVC.genruntimeconfig.cache
 C:\Users\louma\OneDrive\Escritorio\PSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Reports\invoiceStadistics.cshtml.g.cs
+C:\Users\louma\OneDrive\Escritorio\PSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Reports\clientsReport.cshtml.g.cs

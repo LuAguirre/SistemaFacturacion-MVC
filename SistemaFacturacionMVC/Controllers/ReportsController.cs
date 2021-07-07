@@ -111,6 +111,78 @@ namespace SistemaFacturacionMVC.Controllers
             
         }
 
+        public async Task<IActionResult> clientsReport(int? idCliente, string fechaInicio, string fechaFinal)
+        {
+            if (idCliente == 0 && fechaInicio == null && fechaFinal == null)
+            {
+                var listado = await _context.spClient.FromSqlRaw("ventasClientes").ToListAsync();
+
+                var listItems = _context.client.Select(p => new SelectListItem { Value = Convert.ToString(p.id), Text = p.name + " " + p.lastname }).ToList();
+                listItems.Add(new SelectListItem() { Value = "0", Text = "Clientes" });
+
+                ViewData["clientes"] = new SelectList(listItems, "Value", "Text");
+                TempData["idCliente"] = idCliente;
+
+                return View(listado);
+            }
+
+            if (idCliente != 0 && fechaInicio == null && fechaFinal == null)
+            {
+                var listado = await _context.spClient.FromSqlRaw("ventasClientesID @id", new SqlParameter("@id", idCliente)).ToListAsync();
+
+                var listItems = _context.client.Select(p => new SelectListItem { Value = Convert.ToString(p.id), Text = p.name + " " + p.lastname }).ToList();
+                listItems.Add(new SelectListItem() { Value = "0", Text = "Clientes" });
+
+                ViewData["clientes"] = new SelectList(listItems, "Value", "Text");
+                TempData["idCliente"] = idCliente;
+
+                return View(listado);
+            }
+
+            if ((idCliente != 0 && idCliente != null) && fechaInicio != null && fechaFinal != null)
+            {
+                // "2021/06/30"
+                List<SqlParameter> parameters = new List<SqlParameter>
+                    {
+                       new SqlParameter("@id", idCliente),
+                       new SqlParameter("@fechaInicio", fechaInicio),
+                       new SqlParameter("@fechaFinal", fechaFinal)
+                    };
+
+                var listado = await _context.spClient.FromSqlRaw("ventasClientesIDFecha @id, @fechaInicio, @fechaFinal", parameters.ToArray()).ToListAsync();
+
+                var listItems = _context.client.Select(p => new SelectListItem { Value = Convert.ToString(p.id), Text = p.name + " " + p.lastname }).ToList();
+                listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
+
+                ViewData["clientes"] = new SelectList(listItems, "Value", "Text");
+                TempData["idCliente"] = idCliente;
+
+                return View(listado);
+            }
+
+            if (idCliente == null && fechaInicio != null && fechaFinal != null)
+            {
+                List<SqlParameter> parameters = new List<SqlParameter>
+                    {
+                       new SqlParameter("@fechaInicio", fechaInicio),
+                       new SqlParameter("@fechaFinal", fechaFinal)
+                    };
+
+                var listado = await _context.spClient.FromSqlRaw("ventasClientesFecha @fechaInicio, @fechaFinal", parameters.ToArray()).ToListAsync();
+
+                var listItems = _context.client.Select(p => new SelectListItem { Value = Convert.ToString(p.id), Text = p.name + " " + p.lastname }).ToList();
+                listItems.Add(new SelectListItem() { Value = "0", Text = "Clientes" });
+
+                ViewData["clientes"] = new SelectList(listItems, "Value", "Text");
+                TempData["idCliente"] = 0;
+
+                return View(listado);
+            }
+
+            return NotFound();
+
+        }
+
 
     }
 }

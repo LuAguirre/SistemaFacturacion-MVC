@@ -45,7 +45,7 @@
                         <td>@element.dateInvoice</td>
                         <td>@element.status</td>
                         <td>
-                            <a  asp-action="details" asp-route-id="@element.id" class="btn btn-light">Comprar</a>
+                            <a asp-action="details" asp-route-id="@element.id" class="btn btn-light">Comprar</a>
                             <a asp-controller="invoices" asp-action="Edit" asp-route-id="@element.id" class="btn btn-light">Editar</a>
                             <a asp-controller="invoices" asp-action="Delete" asp-route-id="@element.id" class="btn btn-danger">Eliminar</a>
 

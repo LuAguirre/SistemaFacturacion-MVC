@@ -128,13 +128,17 @@ namespace SistemaFacturacionMVC.Controllers
             product pr = _context.product.Find(idProduct);
             invoice invo = _context.invoice.Find(idInvoice);
 
+            
+
             if (ModelState.IsValid)
             {
+               
                 var currentExistence = detail.quantity + pr.existence;
                 if (quantity <= currentExistence)
                 {
                     invo.total = invo.total - (detail.quantity * pr.price);
-                    invo.total = invo.total + (quantity * pr.price);
+                    invo.total = invo.total + (detail.quantity * pr.price);
+
                     _context.invoice.Update(invo);
                     _context.SaveChanges();
 

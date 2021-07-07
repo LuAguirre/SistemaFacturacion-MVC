@@ -22,6 +22,8 @@ namespace SistemaFacturacionMVC.Data
                 .HasNoKey();
             modelBuilder.Entity<estadisticasFactura>()
                 .HasNoKey();
+            modelBuilder.Entity<spClient>()
+                .HasNoKey();
         }
 
 
@@ -31,6 +33,7 @@ namespace SistemaFacturacionMVC.Data
 
         public DbSet<invoice> invoice { get; set; }
         public DbSet<client> client { get; set; }
+        public DbSet<spClient> spClient { get; set; }
         public DbSet<spProducts> spProducts { get; set; }
         public DbSet<estadisticasFactura> estadisticasFacturas { get; set; }
         public DbSet<SistemaFacturacionMVC.Models.userT> user { get; set; }
