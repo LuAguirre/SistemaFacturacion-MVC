@@ -11,26 +11,33 @@
     <div class="card-group">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                @Html.ActionLink("Ir a reporte", "product", new { idProducto = 0, fechaInicio = "", fechaFinal = "" }, new { @class = "btn btn-dark" })
+                <h5 class="card-title">Ventas Productos</h5>
+                <p class="card-text">
+                    mostrar el monto total vendido de cada
+                    producto en el rango de fechas seleccionado (día por día).
+                </p>
+                @Html.ActionLink("Ir a reporte", "product", new { idProducto = 0, fechaInicio = "", fechaFinal = "" }, new { @class = "btn btn-primary d-block m-2" })
             </div>
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                @Html.ActionLink("Ir a reporte", "invoiceStadistics", new { fechaInicio = "01/01/0001", fechaFinal = "01/01/0001" }, new { @class = "btn btn-dark" })
+                <h5 class="card-title">Estadisticas Factura</h5>
+                <p class="card-text">
+                    muestra día por día la cantidad de
+                    facturas emitidas, el monto total facturado y la cantidad de productos
+                    facturados.
+                </p>
+                @Html.ActionLink("Ir a reporte", "invoiceStadistics", new { fechaInicio = "01/01/0001", fechaFinal = "01/01/0001" }, new { @class = "btn btn-primary d-block m-2" })
             </div>
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                @Html.ActionLink("Ir a reporte", "clientsReport", new { idCliente = 0, fechaInicio = "", fechaFinal = "" }, new { @class = "btn btn-dark" })
+                <h5 class="card-title">Compras Clientes</h5>
+                <p class="card-text">
+                    mostrar el monto total vendido por cada cliente en
+                    el rango de fechas seleccionado (día por día).
+                </p>
+                @Html.ActionLink("Ir a reporte", "clientsReport", new { idCliente = 0, fechaInicio = "", fechaFinal = "" }, new { @class = "btn btn-primary d-block m-2" })
             </div>
         </div>
     </div>

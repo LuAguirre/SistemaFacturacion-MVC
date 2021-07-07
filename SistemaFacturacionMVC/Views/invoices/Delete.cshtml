@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>¿Desea Eliminar el Factura?</h1>
+<h1>Eliminar Factura</h1>
 <br />
 <hr />
 <form asp-action="Delete">
@@ -42,8 +42,7 @@
         </tr>
         <tr>
             <td>
-                <a href="@Url.Action("ConfirmacionEliminar","invoices",new { id = Model.id })"> <input type="button" value="Eliminar Factura" class="btn btn-danger" /></a> |
-                @Html.ActionLink("Regresar a la Lista", "Index", "invoices")
+                <a href="@Url.Action("ConfirmacionEliminar","invoices",new { id = Model.id })"> <input type="button" value="Eliminar Factura" class="btn btn-danger" /></a>
             </td>
         </tr>
     </table>

@@ -29,9 +29,9 @@ namespace SistemaFacturacionMVC.Controllers
         {
             List<SelectListItem> listItems = new List<SelectListItem>();
 
-            listItems.Add(new SelectListItem() { Text = "Seleccione una opcion", Value = " " });
+                listItems.Add(new SelectListItem() { Text = "Seleccione una opcion", Value = " " });
 
-            foreach (var item in _context.client)
+            foreach (var item in _context.client.Where(p=> p.status == "Activo"))
             {
                 listItems.Add(new SelectListItem() { Text = $"{item.name} {item.lastname}", Value = $"{item.id}" });
             }
@@ -78,7 +78,7 @@ namespace SistemaFacturacionMVC.Controllers
 
             listItems.Add(new SelectListItem() { Text = "Seleccione una opcion", Value = " " });
 
-            foreach (var item in _context.client)
+            foreach (var item in _context.client.Where(p => p.status == "Activo"))
             {
                 listItems.Add(new SelectListItem() { Text = $"{item.name} {item.lastname}", Value = $"{item.id}" });
             }
@@ -103,7 +103,7 @@ namespace SistemaFacturacionMVC.Controllers
 
             listItems.Add(new SelectListItem() { Text = "Seleccione una opcion", Value = " " });
 
-            foreach (var item in _context.client)
+            foreach (var item in _context.client.Where(p => p.status == "Activo"))
             {
                 listItems.Add(new SelectListItem() { Text = $"{item.name} {item.lastname}", Value = $"{item.id}" });
             }
