@@ -8,7 +8,6 @@ namespace SistemaFacturacionMVC.Models
 {
     public class estadisticasFactura
     {
-        [Key]
         public int Total_facturas { get; set; }
         public decimal monto_facturado { get; set; }
         public int total_Productos { get; set; }

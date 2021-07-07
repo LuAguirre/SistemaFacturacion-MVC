@@ -564,11 +564,8 @@ C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacion
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\products\Delete.cshtml.g.cs
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\products\Edit.cshtml.g.cs
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\products\Index.cshtml.g.cs
-C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\reportes\Index.cshtml.g.cs
-C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\reportes\ReporteVentasProductoAsync.cshtml.g.cs
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Reports\Index.cshtml.g.cs
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Reports\product.cshtml.g.cs
-C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Reports\ReporteEstadisticasFacturacion.cshtml.g.cs
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -586,3 +583,4 @@ C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacion
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\ref\SistemaFacturacionMVC.dll
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\SistemaFacturacionMVC.pdb
 C:\Users\louma\OneDrive\Escritorio\pSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\SistemaFacturacionMVC.genruntimeconfig.cache
+C:\Users\louma\OneDrive\Escritorio\PSF\SistemaFacturacion-MVC\SistemaFacturacionMVC\obj\Debug\net5.0\Razor\Views\Reports\invoiceStadistics.cshtml.g.cs

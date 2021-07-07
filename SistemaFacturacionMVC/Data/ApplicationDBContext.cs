@@ -20,6 +20,8 @@ namespace SistemaFacturacionMVC.Data
                 .HasKey(ip => new { ip.idInvoice, ip.idProduct });
             modelBuilder.Entity<spProducts>()
                 .HasNoKey();
+            modelBuilder.Entity<estadisticasFactura>()
+                .HasNoKey();
         }
 
 
@@ -30,7 +32,6 @@ namespace SistemaFacturacionMVC.Data
         public DbSet<invoice> invoice { get; set; }
         public DbSet<client> client { get; set; }
         public DbSet<spProducts> spProducts { get; set; }
-        public DbSet<reporte1> reporte1 { get; set; }
         public DbSet<estadisticasFactura> estadisticasFacturas { get; set; }
         public DbSet<SistemaFacturacionMVC.Models.userT> user { get; set; }
     }

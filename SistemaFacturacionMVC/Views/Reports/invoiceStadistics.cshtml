@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SistemaFacturacionMVC.Models.estadisticasFactura>
+@{
+    ViewData["Title"] = "Reporte de Facturas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Listado de ventas</h3>
+        </div>
+        <div class="col-sm-7">
+            <input type="date" onchange="mostrarDatos();" class="form-control" id="fechaPrimero">
+            <hr />
+            <input type="date" onchange="mostrarDatos();" class="form-control" id="fechaSegundo">
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <td>Total Facturas</td>
+                        <td>Monto Facturado</td>
+                        <td>Total Productos Aquiridos</td>
+                        <td>Fecha</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Total_facturas)</td>
+                            <td>@item.monto_facturado</td>
+                            <td>@item.total_Productos</td>
+                            <td>@item.dateInvoice</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Actualmente no existe ninguna factura</p>
+        }
+    </div>
+    <hr />
+</div>
+
+<script type="text/javascript">
+    function mostrarDatos() {
+        var fecha_inicio = document.getElementById("fechaPrimero").value;
+        var fecha_final = document.getElementById("fechaSegundo").value;
+
+        if (fecha_inicio != "" && fecha_final != "") {
+            var url = "@Url.Action("invoiceStadistics", "Reports", new { fechaInicio = "param-fecha1", fechaFinal = "param-fecha2" })";
+            url = url.replace("param-fecha1", fecha_inicio).replace("param-fecha2", fecha_final);
+            url = url.replace("amp;", "");
+            $("#result").load(url);
+            window.location.href = url;
+        }
+    }
+</script>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -32,7 +32,7 @@ namespace SistemaFacturacionMVC.Controllers
                 //String queryGG = "select * from product";
                 List<spProducts> list = _context.spProducts.FromSqlRaw("ventaProductos").ToList();
                 var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
-                listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
+                listItems.Add(new SelectListItem() { Value = "0", Text = " Productos " });
 
                 ViewData["productos"] = new SelectList(listItems, "Value", "Text");
                 TempData["idProducto"] = idProducto;
@@ -45,7 +45,7 @@ namespace SistemaFacturacionMVC.Controllers
                 var listado = await _context.spProducts.FromSqlRaw("VentasxProductoxID @idProduct", new SqlParameter("@idProduct", idProducto)).ToListAsync();
 
                 var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
-                listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
+                listItems.Add(new SelectListItem() { Value = "0", Text = " Productos " });
 
                 ViewData["productos"] = new SelectList(listItems, "Value", "Text");
 
@@ -66,7 +66,7 @@ namespace SistemaFacturacionMVC.Controllers
                 var listado = await _context.spProducts.FromSqlRaw("VentasxProducto @fechaInicio, @fechaFinal, @idProduct", parameters.ToArray()).ToListAsync();
 
                 var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
-                listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
+                listItems.Add(new SelectListItem() { Value = "0", Text = " Productos " });
 
                 ViewData["productos"] = new SelectList(listItems, "Value", "Text");
 
@@ -85,7 +85,7 @@ namespace SistemaFacturacionMVC.Controllers
                 var listado = await _context.spProducts.FromSqlRaw("VentasxProductoxfechas @fechaInicio, @fechaFinal", parameters.ToArray()).ToListAsync();
 
                 var listItems = _context.product.Select(p => new SelectListItem { Value = Convert.ToString(p.idProduct), Text = p.name }).ToList();
-                listItems.Add(new SelectListItem() { Value = "0", Text = " -- Todos -- " });
+                listItems.Add(new SelectListItem() { Value = "0", Text = " Productos " });
 
                 ViewData["productos"] = new SelectList(listItems, "Value", "Text");
 
@@ -95,6 +95,22 @@ namespace SistemaFacturacionMVC.Controllers
 
             return NotFound();
         }
+
+        public async Task<IActionResult> invoiceStadistics( string fechaInicio, string fechaFinal)
+        {
+          
+                List<SqlParameter> parameters = new List<SqlParameter>
+                    {
+                       new SqlParameter("@fechaInicio", fechaInicio),
+                       new SqlParameter("@fechaFinal", fechaFinal)
+                    };
+
+                var listado = await _context.estadisticasFacturas.FromSqlRaw("estadisticasFactura @fechaInicio, @fechaFinal", parameters.ToArray()).ToListAsync();
+
+                return View(listado);
+            
+        }
+
 
     }
 }

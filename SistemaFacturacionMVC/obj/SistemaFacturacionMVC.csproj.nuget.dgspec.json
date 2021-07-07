@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\louma\\OneDrive\\Escritorio\\pSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj": {}
+    "C:\\Users\\louma\\OneDrive\\Escritorio\\PSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\louma\\OneDrive\\Escritorio\\pSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj": {
+    "C:\\Users\\louma\\OneDrive\\Escritorio\\PSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\louma\\OneDrive\\Escritorio\\pSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj",
+        "projectUniqueName": "C:\\Users\\louma\\OneDrive\\Escritorio\\PSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj",
         "projectName": "SistemaFacturacionMVC",
-        "projectPath": "C:\\Users\\louma\\OneDrive\\Escritorio\\pSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj",
+        "projectPath": "C:\\Users\\louma\\OneDrive\\Escritorio\\PSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\SistemaFacturacionMVC.csproj",
         "packagesPath": "C:\\Users\\louma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\louma\\OneDrive\\Escritorio\\pSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\obj\\",
+        "outputPath": "C:\\Users\\louma\\OneDrive\\Escritorio\\PSF\\SistemaFacturacion-MVC\\SistemaFacturacionMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

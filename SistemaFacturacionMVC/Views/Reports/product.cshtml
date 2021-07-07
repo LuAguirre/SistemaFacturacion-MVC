@@ -5,20 +5,9 @@
 }
 
 <div class="container">
-
-    @if (TempData["mensaje"] != null)
-    {
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            @TempData["mensaje"]
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    }
-
     <div class="row">
         <div class="col-sm-6">
-            <h3>Listado de ventas</h3>
+            <h3>Ventas Productos</h3>
         </div>
         <div class="col-sm-7">
             <select id="listaProductos" onchange="seleccionarProducto();" class="form-control" asp-items="ViewBag.productos"></select>
@@ -32,13 +21,13 @@
     <div class="row">
         @if (Model.Count() > 0)
         {
-            <table class="table table-bordered table-striped">
+            <table class="table table-dark">
                 <thead>
                     <tr>
-                        <td>@Html.DisplayNameFor(m => m.idProduct)</td>
-                        <td>@Html.DisplayNameFor(m => m.name)</td>
-                        <td>@Html.DisplayNameFor(m => m.Total_Vendido)</td>
-                        <td>@Html.DisplayNameFor(m => m.dateInvoice)</td>
+                        <td>Código Producto</td>
+                        <td>Nombre Producto)</td>
+                        <td>Total en ventas</td>
+                        <td>Fecha</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,15 +45,9 @@
         }
         else
         {
-            <p>Actualmente no existe ninguna venta</p>
+            <p>No hay registros que coincidan con tus parámteros de búsqueda</p>
         }
     </div>
-    <hr />
-    <center>
-        <div class="col-sm-10">
-            <a class="btn btn-danger d-block" asp-action="Index" asp-controller="Reportes">Regresar</a>
-        </div>
-    </center>
 </div>
 
 <script>
@@ -83,10 +66,8 @@
         fechaSegundo = fecha2.value;
 
         if (fechaPrimero == "" || fechaSegundo == "") {
-            alert("NOTA: Ambas fechas son Obligatorias");
-        } else {
             seleccionarProducto();
-        }
+        } 
 
     }
 
